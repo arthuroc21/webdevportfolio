@@ -1,0 +1,46 @@
+.textAlignRight {
+    text-align: right;
+}
+
+.blue-highlight {
+    border-radius: .5rem;
+    color: gray;
+    background-color: lightblue;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+figure {
+    border: thin #c0c0c0 solid;
+    display: flex;
+    flex-flow: column;
+    padding: 5px;
+    max-width: 720px;
+    max-height: 720px;
+    margin: auto;
+}
+
+img {
+    max-width: 320px;
+    max-height: 320px;
+    margin: auto;
+}
+
+figcaption {
+    font-weight: bold;
+    padding: 3px;
+    text-align: center;
+    position: sticky;
+    bottom: 5px;
+}
+
+.inlineElement {
+    float: right;
+}
+
+.gameOverRow {
+    padding: 5.625rem 0rem;
+    text-align: center;
+}

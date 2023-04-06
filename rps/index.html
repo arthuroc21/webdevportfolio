@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>RPS</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css">
+        <script src = "script.js"></script>
+    </head>
+    <body>
+        <div class="btn btn-dark col-12" id = "btnTitle">
+            <h2>Arthur's</h2><br>
+            <h2>Rock Paper Scissors</h2>
+        </div>
+        <main class="container">
+            <section class="sectionSelectPlayers d-block">
+                <div class="col-md-3 mx-auto my-3">
+                    <p><b>Select number of players:</b></p>
+                </div>
+                <div class="col-md-3 mx-auto my-3 p-3 shadow rounded mb-3">
+                    <div class="mb-3">
+                        <input type="radio" class="form-check-input" id="validationFormCheck1" name="radio-stacked" required>
+                        <label class="form-check-label" for="validationFormCheck1"><b>1 PLAYER</b></label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="radio" class="form-check-input" id="validationFormCheck2" name="radio-stacked" required>
+                        <label class="form-check-label" for="validationFormCheck2"><b>2 PLAYERS</b></label>
+                    </div>
+                    <button type="button" class="btn btn-dark col-12" id="btnNext">NEXT</button>
+                </div>
+                <div class="col-md-3 mx-auto my-3 text-center">
+                    <a href="howToPlay.pdf" target="_blank"><b>How to play?</b></a>
+                </div>
+            </section>
+            <section class="sectionOnePlayer d-none">
+                <div class="col-md-3 mx-auto my-3 p-3 shadow rounded mb-3">
+                    <div class="mb-3">
+                        <label for="inputPlayerOneName" class="form-label"><b>Enter player 1 name:</b></label>
+                        <input type="text" class="form-control" id="inputPlayerOneName1" required>
+                    </div>
+                    <div class="mx-auto my-3">
+                        <p><b>Select number of rounds:</b></p>
+                    </div>
+                    <div class="mb-3">
+                        <input type="radio" class="form-check-input" id="validationFormCheck3" name="radio-stacked" required>
+                        <label class="form-check-label" for="validationFormCheck3"><b>ONE</b></label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="radio" class="form-check-input" id="validationFormCheck4" name="radio-stacked" required>
+                        <label class="form-check-label" for="validationFormCheck4"><b>THREE</b></label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="radio" class="form-check-input" id="validationFormCheck5" name="radio-stacked" required>
+                        <label class="form-check-label" for="validationFormCheck5"><b>FIVE</b></label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="radio" class="form-check-input" id="validationFormCheck6" name="radio-stacked" required>
+                        <label class="form-check-label" for="validationFormCheck6"><b>SEVEN</b></label>
+                    </div>
+                    <button type="button" class="btn btn-dark col-12" id="btnStartGame1">START GAME</button>
+                </div>
+            </section>
+            <section class="sectionTwoPlayers d-none">
+                <div class="col-md-3 mx-auto my-3 p-3 shadow rounded mb-3">
+                    <div class="mb-3">
+                        <label for="inputPlayerOneName" class="form-label"><b>Enter player 1 name:</b></label>
+                        <input type="text" class="form-control" id="inputPlayerOneName2" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPlayerTwoName" class="form-label"><b>Enter player 2 name:</b></label>
+                        <input type="text" class="form-control" id="inputPlayerTwoName" required>
+                    </div>
+                    <div class="mx-auto my-3">
+                        <p><b>Select number of rounds:</b></p>
+                    </div>
+                    <div class="mb-3">
+                        <input type="radio" class="form-check-input" id="validationFormCheck7" name="radio-stacked" required>
+                        <label class="form-check-label" for="validationFormCheck3"><b>ONE</b></label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="radio" class="form-check-input" id="validationFormCheck8" name="radio-stacked" required>
+                        <label class="form-check-label" for="validationFormCheck4"><b>THREE</b></label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="radio" class="form-check-input" id="validationFormCheck9" name="radio-stacked" required>
+                        <label class="form-check-label" for="validationFormCheck5"><b>FIVE</b></label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="radio" class="form-check-input" id="validationFormCheck10" name="radio-stacked" required>
+                        <label class="form-check-label" for="validationFormCheck6"><b>SEVEN</b></label>
+                    </div>
+                    <button type="button" class="btn btn-dark col-12" id="btnStartGame2">START GAME</button>
+                </div>
+            </section>
+            <section class="sectionPlayerTurn d-none">
+                <button type="button" class="btn btn-danger inlineElement" id="btnQuit1">QUIT</button>
+                <div class="col-md-3 mx-auto my-3 text-center">
+                    <h5>Round <span class="currentRound"></span> of <span class="totalRounds"></span></h5>
+                </div>
+                <div class="col-md-3 mx-auto my-3 text-center">
+                    <h5>SCORE</h5>
+                </div>
+                <div class="row justify-content-md-center">
+                    <div class="col-md-3">
+                        <p><span class="firstPlayerName1"></span>: <span class="firstPlayerScore1"></span></p>
+                    </div>
+                    <div class="col-md-3 textAlignRight">
+                        <p><span class="secondPlayerName1"></span>: <span class="secondPlayerScore1"></span></p>
+                    </div>
+                </div>
+                <section class="sectionLookAway">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-6 blue-highlight text-center">
+                            <p><span class="otherPlayer"></span>, please look away.</p>
+                        </div>
+                    </div>
+                </section>
+                <div class="col-md-3 mx-auto my-3 text-center">
+                    <h5><span class="currentPlayer"></span>'s Turn</h5>
+                </div>
+                <div class="col-md-3 mx-auto my-3 text-center">
+                    <p>Select a shape:</p>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <button type="button" class="btn mx-auto col-12 btnRock1 d-block" id="btnRock1">
+                            <figure class="rock">
+                                <img class ="playerRock" src="images/player1Rock.png"
+                                    alt="Rock">
+                                <figcaption>ROCK</figcaption>
+                            </figure>
+                        </button>
+                        <button type="button" class="btn mx-auto col-12 btnRock2 d-none" id="btnRock2">
+                            <figure class="rock">
+                                <img class ="playerRock" src="images/player2Rock.png"
+                                    alt="Rock">
+                                <figcaption>ROCK</figcaption>
+                            </figure>
+                        </button>                   
+                    </div>
+                    <div class="col-sm">
+                        <button type="button" class="btn mx-auto col-12 btnPaper1 d-block" id="btnPaper1">
+                            <figure class="paper d-block">
+                                <img class ="playerPaper" src="images/player1Paper.png"
+                                    alt="Paper">
+                                <figcaption>PAPER</figcaption>
+                            </figure>
+                        </button> 
+                        <button type="button" class="btn mx-auto col-12 btnPaper2 d-none" id="btnPaper2">
+                            <figure class="paper d-block">
+                                <img class ="playerPaper" src="images/player2Paper.png"
+                                    alt="Paper">
+                                <figcaption>PAPER</figcaption>
+                            </figure>
+                        </button> 
+                    </div>
+                    <div class="col-sm">
+                        <button type="button" class="btn mx-auto col-12 btnScissors1 d-block" id="btnScissors1">
+                            <figure class="scissors">
+                                <img class ="playerScissors" src="images/player1Scissors.png"
+                                    alt="Scissors">
+                                <figcaption>SCISSORS</figcaption>
+                            </figure>
+                        </button>
+                        <button type="button" class="btn mx-auto col-12 btnScissors2 d-none" id="btnScissors2">
+                            <figure class="scissors">
+                                <img class ="playerScissors" src="images/player2Scissors.png"
+                                    alt="Scissors">
+                                <figcaption>SCISSORS</figcaption>
+                            </figure>
+                        </button>
+                    </div>
+                  </div>
+            </section>
+            <section class="sectionRoundWinner d-none">
+                <button type="button" class="btn btn-danger inlineElement" id="btnQuit2">QUIT</button>
+                <div class="col-md-3 mx-auto my-3 text-center">
+                    <h5>Round <span class="currentRound2"></span> of <span class="totalRounds2"></span></h5>
+                </div>
+                <div class="col-md-3 mx-auto my-3 text-center">
+                    <h5>SCORE</h5>
+                </div>
+                <div class="row justify-content-md-center">
+                    <div class="col-md-3">
+                        <p><span class="firstPlayerName2"></span>: <span class="firstPlayerScore2"></span></p>
+                    </div>
+                    <div class="col-md-3 textAlignRight">
+                        <p><span class="secondPlayerName2"></span>: <span class="secondPlayerScore2"></span></p>
+                    </div>
+                </div>
+                <div class="col-md-3 mx-auto my-3 text-center">
+                    <p>Winner of this round:</p>
+                </div>
+                <div class="col-md-3 mx-auto my-3 text-center">
+                    <h5 class="roundWinner"></h5>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <p><b><span class="firstPlayerName3"></span> selected:</b></p>
+                    </div>
+                    <div class="col-sm">
+                    </div>
+                    <div class="col-sm">
+                        <p><b><span class="secondPlayerName3"></span> selected:</b></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <figure>
+                            <img class ="imageFirstPlayer" src=""
+                                    alt="">
+                            <figcaption class ="figCaptionFirstPlayer"></figcaption>
+                        </figure>                        
+                    </div>
+                    <div class="col-sm">
+                    </div>
+                    <div class="col-sm">
+                        <figure>
+                            <img class ="imageSecondPlayer" src=""
+                                    alt="">
+                            <figcaption class ="figCaptionSecondPlayer"></figcaption>
+                        </figure>  
+                    </div>
+                </div>
+                <div class="col-md-3 mx-auto my-3">
+                    <button type="button" class="btn btn-dark col-12 d-block" id="btnNextRound">PLAY NEXT ROUND</button>
+                    <button type="button" class="btn btn-dark col-12 d-none" id="btnDisplayWinner">DISPLAY WINNER</button>
+                </div>
+            </section>
+            <section class="sectionWinner d-none">
+                <button type="button" class="btn btn-danger inlineElement" id="btnQuit3">QUIT</button>
+                <div class="col-md-3 mx-auto my-3 text-center">
+                    <h5>Round <span class="currentRound3"></span> of <span class="totalRounds3"></span></h5>
+                </div>
+                <div class="col-md-3 mx-auto my-3 text-center">
+                    <h5>SCORE</h5>
+                </div>
+                <div class="row justify-content-md-center">
+                    <div class="col-md-3">
+                        <p><span class="firstPlayerName4"></span>: <span class="firstPlayerScore3"></span></p>
+                    </div>
+                    <div class="col-md-3 textAlignRight">
+                        <p><span class="secondPlayerName4"></span>: <span class="secondPlayerScore3"></span></p>
+                    </div>
+                </div>
+                <div class="col-md-3 mx-auto my-3 text-center">
+                    <h5>GAME WINNER:</h5>
+                </div>
+                <div class="col-md-3 mx-auto my-3 text-center">
+                    <h5 class="winner"></h5>
+                </div>
+                <div class="row gameOverRow d-block">
+                    <div class="col-sm">
+                    </div>
+                    <div class="col-sm">
+                        <h5>GAME OVER!</h5><br>
+                        <h5>THANK YOU FOR PLAYING!</h5>
+                    </div>
+                    <div class="col-sm">
+                    </div>
+                </div>
+                <div class="col-md-3 mx-auto my-3">
+                    <button type="button" class="btn btn-dark col-12 d-block" id="btnNewGame">NEW GAME</button>
+                    <button type="button" class="btn btn-dark col-12 d-none" id="btnTiebreakerRound">Play Tiebreaker Round</button>
+                </div>
+            </section>
+        </main>
+    </body>
+    <script>
+
+        /*Section Select Players*/
+
+        const btnNext = document.querySelector('#btnNext');
+        const validationFormCheck1 = document.querySelector('#validationFormCheck1');
+        const validationFormCheck2 = document.querySelector('#validationFormCheck2');
+        var numberOfPlayers = 0;
+        const btnStartGame1 = document.querySelector('#btnStartGame1');
+        const btnStartGame2 = document.querySelector('#btnStartGame2');
+        var secondPlayerNameWord = document.querySelector('#inputPlayerTwoName').value;
+        const btnRock1 = document.querySelector('#btnRock1');
+        const btnPaper1 = document.querySelector('#btnPaper1');
+        const btnScissors1 = document.querySelector('#btnScissors1');
+        const btnRock2 = document.querySelector('#btnRock2');
+        const btnPaper2 = document.querySelector('#btnPaper2');
+        const btnScissors2 = document.querySelector('#btnScissors2');
+        var roundWinner = document.querySelector('.roundWinner');
+        const imageFirstPlayer = document.querySelector('.imageFirstPlayer');
+        const imageSecondPlayer = document.querySelector('.imageSecondPlayer');
+        const figCaptionFirstPlayer = document.querySelector('.figCaptionFirstPlayer');
+        const figCaptionSecondPlayer = document.querySelector('.figCaptionSecondPlayer');
+        const btnNextRound = document.querySelector('#btnNextRound');
+        const playerRock = document.querySelector('.playerRock');
+        const playerPaper = document.querySelector('.playerPaper');
+        const playerScissors = document.querySelector('.playerScissors');
+
+        validationFormCheck1.addEventListener('click', function(){
+            numberOfPlayers = 1;
+            secondPlayerNameWord = "Computer"
+        });
+
+        validationFormCheck2.addEventListener('click', function(){
+            numberOfPlayers = 2;
+        });
+
+        btnNext.addEventListener('click', function(){
+            document.querySelector('.sectionSelectPlayers').classList.remove('d-block');
+            document.querySelector('.sectionSelectPlayers').classList.add('d-none');
+            if (numberOfPlayers === 1) {
+                document.querySelector('.sectionOnePlayer').classList.remove('d-none');
+                document.querySelector('.sectionOnePlayer').classList.remove('d-block');
+            }
+            else {
+                document.querySelector('.sectionTwoPlayers').classList.remove('d-none');
+                document.querySelector('.sectionTwoPlayers').classList.remove('d-block');
+            }
+        });
+
+        /*Section One/two Players*/
+
+        const currentRound = document.querySelector('.currentRound');
+        var currentRoundNumber = 1;
+        const totalRounds = document.querySelector('.totalRounds');
+        var totalRoundsNumber = 0;
+        const currentRound2 = document.querySelector('.currentRound2');
+        const totalRounds2 = document.querySelector('.totalRounds2');
+        const currentRound3 = document.querySelector('.currentRound3');
+        const totalRounds3 = document.querySelector('.totalRounds3');
+        const validationFormCheck3 = document.querySelector('#validationFormCheck3');
+        const validationFormCheck4 = document.querySelector('#validationFormCheck4');
+        const validationFormCheck5 = document.querySelector('#validationFormCheck5');
+        const validationFormCheck6 = document.querySelector('#validationFormCheck6');
+        const validationFormCheck7 = document.querySelector('#validationFormCheck7');
+        const validationFormCheck8 = document.querySelector('#validationFormCheck8');
+        const validationFormCheck9 = document.querySelector('#validationFormCheck9');
+        const validationFormCheck10 = document.querySelector('#validationFormCheck10');
+
+/*--------------------------------------------------------------------------------------------*/
+
+        const firstPlayerName1 = document.querySelector('.firstPlayerName1');
+        const firstPlayerScore1 = document.querySelector('.firstPlayerScore1');
+        const secondPlayerName1 = document.querySelector('.secondPlayerName1');
+        const secondPlayerScore1 = document.querySelector('.secondPlayerScore1');
+
+        const firstPlayerName2 = document.querySelector('.firstPlayerName2');
+        const firstPlayerScore2 = document.querySelector('.firstPlayerScore2');
+        const secondPlayerName2 = document.querySelector('.secondPlayerName2');
+        const secondPlayerScore2 = document.querySelector('.secondPlayerScore2');
+
+        const firstPlayerName3 = document.querySelector('.firstPlayerName3');
+        const firstPlayerScore3 = document.querySelector('.firstPlayerScore3');
+        const secondPlayerName3 = document.querySelector('.secondPlayerName3');
+        const secondPlayerScore3 = document.querySelector('.secondPlayerScore3');
+
+        const firstPlayerName4 = document.querySelector('.firstPlayerName4');
+        const firstPlayerScore4 = document.querySelector('.firstPlayerScore4');
+        const secondPlayerName4 = document.querySelector('.secondPlayerName4');
+        const secondPlayerScore4 = document.querySelector('.secondPlayerScore4');
+
+        var firstPlayerNameWord = 0;
+        var firstPlayerScoreNumber = 0;
+        var secondPlayerScoreNumber = 0;
+        const otherPlayer = document.querySelector('.otherPlayer');
+        const currentPlayer = document.querySelector('.currentPlayer');
+
+/*--------------------------------------------------------------------------------------------*/
+
+        validationFormCheck3.addEventListener('click', function(){
+            totalRoundsNumber = 1;
+        });
+
+        validationFormCheck4.addEventListener('click', function(){
+            totalRoundsNumber = 3;
+        });
+
+        validationFormCheck5.addEventListener('click', function(){
+            totalRoundsNumber = 5;
+        });
+
+        validationFormCheck6.addEventListener('click', function(){
+            totalRoundsNumber = 7;
+        });
+
+        validationFormCheck7.addEventListener('click', function(){
+            totalRoundsNumber = 1;
+        });
+
+        validationFormCheck8.addEventListener('click', function(){
+            totalRoundsNumber = 3;
+        });
+
+        validationFormCheck9.addEventListener('click', function(){
+            totalRoundsNumber = 5;
+        });
+
+        validationFormCheck10.addEventListener('click', function(){
+            totalRoundsNumber = 7;
+        });
+
+        btnStartGame1.addEventListener('click', function(){
+            document.querySelector('.sectionOnePlayer').classList.remove('d-block');
+            document.querySelector('.sectionOnePlayer').classList.add('d-none');
+            document.querySelector('.sectionTwoPlayers').classList.remove('d-block');
+            document.querySelector('.sectionTwoPlayers').classList.add('d-none');
+            document.querySelector('.sectionPlayerTurn').classList.remove('d-none');
+            document.querySelector('.sectionPlayerTurn').classList.add('d-block');
+            document.querySelector('.sectionLookAway').classList.add('d-none');
+            firstPlayerNameWord = document.querySelector('#inputPlayerOneName1').value;
+            currentRound.innerHTML = currentRoundNumber;
+            totalRounds.innerHTML = totalRoundsNumber;
+            firstPlayerName1.innerHTML = firstPlayerNameWord;
+            firstPlayerScore1.innerHTML = firstPlayerScoreNumber;
+            secondPlayerName1.innerHTML = secondPlayerNameWord;
+            secondPlayerScore1.innerHTML = secondPlayerScoreNumber;
+            currentPlayer.innerHTML = firstPlayerNameWord;
+        });
+
+        btnStartGame2.addEventListener('click', function(){
+            document.querySelector('.sectionOnePlayer').classList.remove('d-block');
+            document.querySelector('.sectionOnePlayer').classList.add('d-none');
+            document.querySelector('.sectionTwoPlayers').classList.remove('d-block');
+            document.querySelector('.sectionTwoPlayers').classList.add('d-none');
+            document.querySelector('.sectionPlayerTurn').classList.remove('d-none');
+            document.querySelector('.sectionPlayerTurn').classList.add('d-block');
+            firstPlayerNameWord = document.querySelector('#inputPlayerOneName2').value;
+            secondPlayerNameWord = document.querySelector('#inputPlayerTwoName').value;
+            currentRound.innerHTML = currentRoundNumber;
+            totalRounds.innerHTML = totalRoundsNumber;
+            firstPlayerName1.innerHTML = firstPlayerNameWord;
+            firstPlayerScore1.innerHTML = firstPlayerScoreNumber;
+            secondPlayerName1.innerHTML = secondPlayerNameWord;
+            secondPlayerScore1.innerHTML = secondPlayerScoreNumber;
+            otherPlayer.innerHTML = secondPlayerNameWord;
+            currentPlayer.innerHTML = firstPlayerNameWord;
+            /*
+            if (currentRoundNumber/2 === 0) {
+                otherPlayer.innerHTML = firstPlayerNameWord;
+                currentPlayer.innerHTML = secondPlayerNameWord;
+            }
+            else {
+                otherPlayer.innerHTML = secondPlayerNameWord;
+                currentPlayer.innerHTML = firstPlayerNameWord;
+            }
+            */
+        });
+
+        var firstPlayerSelection = "";
+        var secondPlayerSelection = "";
+        var winner = document.querySelector('.winner');
+        const btnNewGame = document.querySelector('#btnNewGame');
+        const btnTiebreakerRound = document.querySelector('#btnTiebreakerRound');
+        const btnDisplayWinner = document.querySelector('#btnDisplayWinner');
+        const btnQuit1 = document.querySelector('#btnQuit1');
+        const btnQuit2 = document.querySelector('#btnQuit2');
+        const btnQuit3 = document.querySelector('#btnQuit3');
+        const btnTitle = document.querySelector('#btnTitle');
+        const arrayRPS = ["r", "p", "s"]; 
+
+            btnRock1.addEventListener('click', function(){
+                if (numberOfPlayers === 2) {
+                    currentPlayer.innerHTML = secondPlayerNameWord;
+                    otherPlayer.innerHTML = firstPlayerNameWord;
+                    document.querySelector('.btnRock1').classList.remove('d-block');
+                    document.querySelector('.btnRock1').classList.add('d-none');
+                    document.querySelector('.btnRock2').classList.remove('d-none');
+                    document.querySelector('.btnRock2').classList.add('d-block');
+                    document.querySelector('.btnPaper1').classList.remove('d-block');
+                    document.querySelector('.btnPaper1').classList.add('d-none');
+                    document.querySelector('.btnPaper2').classList.remove('d-none');
+                    document.querySelector('.btnPaper2').classList.add('d-block');
+                    document.querySelector('.btnScissors1').classList.remove('d-block');
+                    document.querySelector('.btnScissors1').classList.add('d-none');
+                    document.querySelector('.btnScissors2').classList.remove('d-none');
+                    document.querySelector('.btnScissors2').classList.add('d-block');
+                    firstPlayerSelection = "r";
+                    imageFirstPlayer.src = "images/player1Rock.png";
+                    imageFirstPlayer.alt = "Rock";
+                    figCaptionFirstPlayer.innerHTML = "ROCK";
+                }
+                else {
+                    firstPlayerSelection = "r";
+                    imageFirstPlayer.src = "images/player1Rock.png";
+                    imageFirstPlayer.alt = "Rock";
+                    figCaptionFirstPlayer.innerHTML = "ROCK";
+                    var random = Math.floor(Math.random() * arrayRPS.length);
+                    secondPlayerSelection = arrayRPS[random];
+                    if(secondPlayerSelection == "r") {
+                        imageSecondPlayer.src = "images/player2Rock.png";
+                        imageSecondPlayer.alt = "Rock";
+                        figCaptionSecondPlayer.innerHTML = "ROCK";
+                    }
+                    else if (secondPlayerSelection == "p") {
+                        imageSecondPlayer.src = "images/player2Paper.png";
+                        imageSecondPlayer.alt = "Paper";
+                        figCaptionSecondPlayer.innerHTML = "PAPER";
+                    }
+                    else {
+                        imageSecondPlayer.src = "images/player2Scissors.png";
+                        imageSecondPlayer.alt = "Scissors";
+                        figCaptionSecondPlayer.innerHTML = "SCISSORS";
+                    }
+                    if(firstPlayerSelection + secondPlayerSelection === "rr" || firstPlayerSelection + secondPlayerSelection === "pp" || firstPlayerSelection + secondPlayerSelection === "ss") {
+                        document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                        document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                        document.querySelector('.sectionWinner').classList.remove('d-none');
+                        document.querySelector('.sectionWinner').classList.add('d-block');
+                        currentRound3.innerHTML = currentRoundNumber;
+                        totalRounds3.innerHTML = totalRoundsNumber;
+                        firstPlayerName4.innerHTML = firstPlayerNameWord;
+                        firstPlayerScore3.innerHTML = firstPlayerScoreNumber;
+                        secondPlayerName4.innerHTML = secondPlayerNameWord;
+                        secondPlayerScore3.innerHTML = secondPlayerScoreNumber;
+                        winner.innerHTML = "Draw!";
+                        document.querySelector('.gameOverRow').classList.remove('d-block');
+                        document.querySelector('.gameOverRow').classList.add('d-none');
+                        document.querySelector('#btnNewGame').classList.remove('d-block');
+                        document.querySelector('#btnNewGame').classList.add('d-none');
+                        document.querySelector('#btnTiebreakerRound').classList.remove('d-none');
+                        document.querySelector('#btnTiebreakerRound').classList.add('d-block');
+                    }
+                    else if(firstPlayerSelection + secondPlayerSelection === "rs" || firstPlayerSelection + secondPlayerSelection === "pr" || firstPlayerSelection + secondPlayerSelection === "sp") {
+                        document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                        document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                        document.querySelector('.sectionRoundWinner').classList.remove('d-none');
+                        document.querySelector('.sectionRoundWinner').classList.add('d-block');
+                        firstPlayerScoreNumber = firstPlayerScoreNumber + 1;
+                        currentRound2.innerHTML = currentRoundNumber;
+                        totalRounds2.innerHTML = totalRoundsNumber;
+                        firstPlayerName2.innerHTML = firstPlayerNameWord;
+                        firstPlayerScore2.innerHTML = firstPlayerScoreNumber;
+                        secondPlayerName2.innerHTML = secondPlayerNameWord;
+                        secondPlayerScore2.innerHTML = secondPlayerScoreNumber;
+                        roundWinner.innerHTML = firstPlayerNameWord;
+                        firstPlayerName3.innerHTML = firstPlayerNameWord;
+                        secondPlayerName3.innerHTML = secondPlayerNameWord;
+                        currentRoundNumber = currentRoundNumber + 1;
+                        if (firstPlayerScoreNumber > (totalRoundsNumber/2) || secondPlayerScoreNumber > (totalRoundsNumber/2)) {
+                            document.querySelector('#btnNextRound').classList.remove('d-block');
+                            document.querySelector('#btnNextRound').classList.add('d-none');
+                            document.querySelector('#btnDisplayWinner').classList.remove('d-none');
+                            document.querySelector('#btnDisplayWinner').classList.add('d-block');
+                            currentRoundNumber = currentRoundNumber - 1;
+                        }
+                    }
+                    else {
+                        document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                        document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                        document.querySelector('.sectionRoundWinner').classList.remove('d-none');
+                        document.querySelector('.sectionRoundWinner').classList.add('d-block');
+                        secondPlayerScoreNumber = secondPlayerScoreNumber + 1;
+                        currentRound2.innerHTML = currentRoundNumber;
+                        totalRounds2.innerHTML = totalRoundsNumber;
+                        firstPlayerName2.innerHTML = firstPlayerNameWord;
+                        firstPlayerScore2.innerHTML = firstPlayerScoreNumber;
+                        secondPlayerName2.innerHTML = secondPlayerNameWord;
+                        secondPlayerScore2.innerHTML = secondPlayerScoreNumber;
+                        roundWinner.innerHTML = secondPlayerNameWord;
+                        firstPlayerName3.innerHTML = firstPlayerNameWord;
+                        secondPlayerName3.innerHTML = secondPlayerNameWord;
+                        currentRoundNumber = currentRoundNumber + 1;
+                        if (firstPlayerScoreNumber > (totalRoundsNumber/2) || secondPlayerScoreNumber > (totalRoundsNumber/2)) {
+                            document.querySelector('#btnNextRound').classList.remove('d-block');
+                            document.querySelector('#btnNextRound').classList.add('d-none');
+                            document.querySelector('#btnDisplayWinner').classList.remove('d-none');
+                            document.querySelector('#btnDisplayWinner').classList.add('d-block');
+                            currentRoundNumber = currentRoundNumber - 1;
+                        }
+                    }
+                }
+            });
+            btnPaper1.addEventListener('click', function(){
+                if(numberOfPlayers === 2) {
+                    currentPlayer.innerHTML = secondPlayerNameWord;
+                    otherPlayer.innerHTML = firstPlayerNameWord;
+                    document.querySelector('.btnRock1').classList.remove('d-block');
+                    document.querySelector('.btnRock1').classList.add('d-none');
+                    document.querySelector('.btnRock2').classList.remove('d-none');
+                    document.querySelector('.btnRock2').classList.add('d-block');
+                    document.querySelector('.btnPaper1').classList.remove('d-block');
+                    document.querySelector('.btnPaper1').classList.add('d-none');
+                    document.querySelector('.btnPaper2').classList.remove('d-none');
+                    document.querySelector('.btnPaper2').classList.add('d-block');
+                    document.querySelector('.btnScissors1').classList.remove('d-block');
+                    document.querySelector('.btnScissors1').classList.add('d-none');
+                    document.querySelector('.btnScissors2').classList.remove('d-none');
+                    document.querySelector('.btnScissors2').classList.add('d-block');
+                    firstPlayerSelection = "p";
+                    imageFirstPlayer.src = "images/player1Paper.png";
+                    imageFirstPlayer.alt = "Paper";
+                    figCaptionFirstPlayer.innerHTML = "PAPER";
+                }
+                else {
+                    firstPlayerSelection = "p";
+                    imageFirstPlayer.src = "images/player1Paper.png";
+                    imageFirstPlayer.alt = "Paper";
+                    figCaptionFirstPlayer.innerHTML = "PAPER";
+                    var random = Math.floor(Math.random() * arrayRPS.length);
+                    secondPlayerSelection = arrayRPS[random];
+                    if(secondPlayerSelection == "r") {
+                        imageSecondPlayer.src = "images/player2Rock.png";
+                        imageSecondPlayer.alt = "Rock";
+                        figCaptionSecondPlayer.innerHTML = "ROCK";
+                    }
+                    else if (secondPlayerSelection == "p") {
+                        imageSecondPlayer.src = "images/player2Paper.png";
+                        imageSecondPlayer.alt = "Paper";
+                        figCaptionSecondPlayer.innerHTML = "PAPER";
+                    }
+                    else {
+                        imageSecondPlayer.src = "images/player2Scissors.png";
+                        imageSecondPlayer.alt = "Scissors";
+                        figCaptionSecondPlayer.innerHTML = "SCISSORS";
+                    }
+                    if(firstPlayerSelection + secondPlayerSelection === "rr" || firstPlayerSelection + secondPlayerSelection === "pp" || firstPlayerSelection + secondPlayerSelection === "ss") {
+                        document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                        document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                        document.querySelector('.sectionWinner').classList.remove('d-none');
+                        document.querySelector('.sectionWinner').classList.add('d-block');
+                        currentRound3.innerHTML = currentRoundNumber;
+                        totalRounds3.innerHTML = totalRoundsNumber;
+                        firstPlayerName4.innerHTML = firstPlayerNameWord;
+                        firstPlayerScore3.innerHTML = firstPlayerScoreNumber;
+                        secondPlayerName4.innerHTML = secondPlayerNameWord;
+                        secondPlayerScore3.innerHTML = secondPlayerScoreNumber;
+                        winner.innerHTML = "Draw!";
+                        document.querySelector('.gameOverRow').classList.remove('d-block');
+                        document.querySelector('.gameOverRow').classList.add('d-none');
+                        document.querySelector('#btnNewGame').classList.remove('d-block');
+                        document.querySelector('#btnNewGame').classList.add('d-none');
+                        document.querySelector('#btnTiebreakerRound').classList.remove('d-none');
+                        document.querySelector('#btnTiebreakerRound').classList.add('d-block');
+                    }
+                    else if(firstPlayerSelection + secondPlayerSelection === "rs" || firstPlayerSelection + secondPlayerSelection === "pr" || firstPlayerSelection + secondPlayerSelection === "sp") {
+                        document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                        document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                        document.querySelector('.sectionRoundWinner').classList.remove('d-none');
+                        document.querySelector('.sectionRoundWinner').classList.add('d-block');
+                        firstPlayerScoreNumber = firstPlayerScoreNumber + 1;
+                        currentRound2.innerHTML = currentRoundNumber;
+                        totalRounds2.innerHTML = totalRoundsNumber;
+                        firstPlayerName2.innerHTML = firstPlayerNameWord;
+                        firstPlayerScore2.innerHTML = firstPlayerScoreNumber;
+                        secondPlayerName2.innerHTML = secondPlayerNameWord;
+                        secondPlayerScore2.innerHTML = secondPlayerScoreNumber;
+                        roundWinner.innerHTML = firstPlayerNameWord;
+                        firstPlayerName3.innerHTML = firstPlayerNameWord;
+                        secondPlayerName3.innerHTML = secondPlayerNameWord;
+                        currentRoundNumber = currentRoundNumber + 1;
+                        if (firstPlayerScoreNumber > (totalRoundsNumber/2) || secondPlayerScoreNumber > (totalRoundsNumber/2)) {
+                            document.querySelector('#btnNextRound').classList.remove('d-block');
+                            document.querySelector('#btnNextRound').classList.add('d-none');
+                            document.querySelector('#btnDisplayWinner').classList.remove('d-none');
+                            document.querySelector('#btnDisplayWinner').classList.add('d-block');
+                            currentRoundNumber = currentRoundNumber - 1;
+                        }
+                    }
+                    else {
+                        document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                        document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                        document.querySelector('.sectionRoundWinner').classList.remove('d-none');
+                        document.querySelector('.sectionRoundWinner').classList.add('d-block');
+                        secondPlayerScoreNumber = secondPlayerScoreNumber + 1;
+                        currentRound2.innerHTML = currentRoundNumber;
+                        totalRounds2.innerHTML = totalRoundsNumber;
+                        firstPlayerName2.innerHTML = firstPlayerNameWord;
+                        firstPlayerScore2.innerHTML = firstPlayerScoreNumber;
+                        secondPlayerName2.innerHTML = secondPlayerNameWord;
+                        secondPlayerScore2.innerHTML = secondPlayerScoreNumber;
+                        roundWinner.innerHTML = secondPlayerNameWord;
+                        firstPlayerName3.innerHTML = firstPlayerNameWord;
+                        secondPlayerName3.innerHTML = secondPlayerNameWord;
+                        currentRoundNumber = currentRoundNumber + 1;
+                        if (firstPlayerScoreNumber > (totalRoundsNumber/2) || secondPlayerScoreNumber > (totalRoundsNumber/2)) {
+                            document.querySelector('#btnNextRound').classList.remove('d-block');
+                            document.querySelector('#btnNextRound').classList.add('d-none');
+                            document.querySelector('#btnDisplayWinner').classList.remove('d-none');
+                            document.querySelector('#btnDisplayWinner').classList.add('d-block');
+                            currentRoundNumber = currentRoundNumber - 1;
+                        }
+                    }
+                }
+            });
+
+            btnScissors1.addEventListener('click', function(){
+                if(numberOfPlayers === 2) {
+                    currentPlayer.innerHTML = secondPlayerNameWord;
+                    otherPlayer.innerHTML = firstPlayerNameWord;
+                    document.querySelector('.btnRock1').classList.remove('d-block');
+                    document.querySelector('.btnRock1').classList.add('d-none');
+                    document.querySelector('.btnRock2').classList.remove('d-none');
+                    document.querySelector('.btnRock2').classList.add('d-block');
+                    document.querySelector('.btnPaper1').classList.remove('d-block');
+                    document.querySelector('.btnPaper1').classList.add('d-none');
+                    document.querySelector('.btnPaper2').classList.remove('d-none');
+                    document.querySelector('.btnPaper2').classList.add('d-block');
+                    document.querySelector('.btnScissors1').classList.remove('d-block');
+                    document.querySelector('.btnScissors1').classList.add('d-none');
+                    document.querySelector('.btnScissors2').classList.remove('d-none');
+                    document.querySelector('.btnScissors2').classList.add('d-block');
+                    firstPlayerSelection = "s";
+                    imageFirstPlayer.src = "images/player1Scissors.png";
+                    imageFirstPlayer.alt = "Scissors";
+                    figCaptionFirstPlayer.innerHTML = "SCISSORS";
+                }
+                else {
+                    firstPlayerSelection = "s";
+                    imageFirstPlayer.src = "images/player1Scissors.png";
+                    imageFirstPlayer.alt = "Scissors";
+                    figCaptionFirstPlayer.innerHTML = "SCISSORS";
+                    var random = Math.floor(Math.random() * arrayRPS.length);
+                    secondPlayerSelection = arrayRPS[random];
+                    if(secondPlayerSelection == "r") {
+                        imageSecondPlayer.src = "images/player2Rock.png";
+                        imageSecondPlayer.alt = "Rock";
+                        figCaptionSecondPlayer.innerHTML = "ROCK";
+                    }
+                    else if (secondPlayerSelection == "p") {
+                        imageSecondPlayer.src = "images/player2Paper.png";
+                        imageSecondPlayer.alt = "Paper";
+                        figCaptionSecondPlayer.innerHTML = "PAPER";
+                    }
+                    else {
+                        imageSecondPlayer.src = "images/player2Scissors.png";
+                        imageSecondPlayer.alt = "Scissors";
+                        figCaptionSecondPlayer.innerHTML = "SCISSORS";
+                    }
+                    if(firstPlayerSelection + secondPlayerSelection === "rr" || firstPlayerSelection + secondPlayerSelection === "pp" || firstPlayerSelection + secondPlayerSelection === "ss") {
+                        document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                        document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                        document.querySelector('.sectionWinner').classList.remove('d-none');
+                        document.querySelector('.sectionWinner').classList.add('d-block');
+                        currentRound3.innerHTML = currentRoundNumber;
+                        totalRounds3.innerHTML = totalRoundsNumber;
+                        firstPlayerName4.innerHTML = firstPlayerNameWord;
+                        firstPlayerScore3.innerHTML = firstPlayerScoreNumber;
+                        secondPlayerName4.innerHTML = secondPlayerNameWord;
+                        secondPlayerScore3.innerHTML = secondPlayerScoreNumber;
+                        winner.innerHTML = "Draw!";
+                        document.querySelector('.gameOverRow').classList.remove('d-block');
+                        document.querySelector('.gameOverRow').classList.add('d-none');
+                        document.querySelector('#btnNewGame').classList.remove('d-block');
+                        document.querySelector('#btnNewGame').classList.add('d-none');
+                        document.querySelector('#btnTiebreakerRound').classList.remove('d-none');
+                        document.querySelector('#btnTiebreakerRound').classList.add('d-block');
+                    }
+                    else if(firstPlayerSelection + secondPlayerSelection === "rs" || firstPlayerSelection + secondPlayerSelection === "pr" || firstPlayerSelection + secondPlayerSelection === "sp") {
+                        document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                        document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                        document.querySelector('.sectionRoundWinner').classList.remove('d-none');
+                        document.querySelector('.sectionRoundWinner').classList.add('d-block');
+                        firstPlayerScoreNumber = firstPlayerScoreNumber + 1;
+                        currentRound2.innerHTML = currentRoundNumber;
+                        totalRounds2.innerHTML = totalRoundsNumber;
+                        firstPlayerName2.innerHTML = firstPlayerNameWord;
+                        firstPlayerScore2.innerHTML = firstPlayerScoreNumber;
+                        secondPlayerName2.innerHTML = secondPlayerNameWord;
+                        secondPlayerScore2.innerHTML = secondPlayerScoreNumber;
+                        roundWinner.innerHTML = firstPlayerNameWord;
+                        firstPlayerName3.innerHTML = firstPlayerNameWord;
+                        secondPlayerName3.innerHTML = secondPlayerNameWord;
+                        currentRoundNumber = currentRoundNumber + 1;
+                        if (firstPlayerScoreNumber > (totalRoundsNumber/2) || secondPlayerScoreNumber > (totalRoundsNumber/2)) {
+                            document.querySelector('#btnNextRound').classList.remove('d-block');
+                            document.querySelector('#btnNextRound').classList.add('d-none');
+                            document.querySelector('#btnDisplayWinner').classList.remove('d-none');
+                            document.querySelector('#btnDisplayWinner').classList.add('d-block');
+                            currentRoundNumber = currentRoundNumber - 1;
+                        }
+                    }
+                    else {
+                        document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                        document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                        document.querySelector('.sectionRoundWinner').classList.remove('d-none');
+                        document.querySelector('.sectionRoundWinner').classList.add('d-block');
+                        secondPlayerScoreNumber = secondPlayerScoreNumber + 1;
+                        currentRound2.innerHTML = currentRoundNumber;
+                        totalRounds2.innerHTML = totalRoundsNumber;
+                        firstPlayerName2.innerHTML = firstPlayerNameWord;
+                        firstPlayerScore2.innerHTML = firstPlayerScoreNumber;
+                        secondPlayerName2.innerHTML = secondPlayerNameWord;
+                        secondPlayerScore2.innerHTML = secondPlayerScoreNumber;
+                        roundWinner.innerHTML = secondPlayerNameWord;
+                        firstPlayerName3.innerHTML = firstPlayerNameWord;
+                        secondPlayerName3.innerHTML = secondPlayerNameWord;
+                        currentRoundNumber = currentRoundNumber + 1;
+                        if (firstPlayerScoreNumber > (totalRoundsNumber/2) || secondPlayerScoreNumber > (totalRoundsNumber/2)) {
+                            document.querySelector('#btnNextRound').classList.remove('d-block');
+                            document.querySelector('#btnNextRound').classList.add('d-none');
+                            document.querySelector('#btnDisplayWinner').classList.remove('d-none');
+                            document.querySelector('#btnDisplayWinner').classList.add('d-block');
+                            currentRoundNumber = currentRoundNumber - 1;
+                        }
+                    }
+                }
+            });
+
+            btnRock2.addEventListener('click', function(){
+                secondPlayerSelection = "r"
+                imageSecondPlayer.src = "images/player2Rock.png";
+                imageSecondPlayer.alt = "Rock";
+                figCaptionSecondPlayer.innerHTML = "ROCK";
+                if(firstPlayerSelection + secondPlayerSelection === "rr" || firstPlayerSelection + secondPlayerSelection === "pp" || firstPlayerSelection + secondPlayerSelection === "ss") {
+                    document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                    document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                    document.querySelector('.sectionWinner').classList.remove('d-none');
+                    document.querySelector('.sectionWinner').classList.add('d-block');
+                    currentRound3.innerHTML = currentRoundNumber;
+                    totalRounds3.innerHTML = totalRoundsNumber;
+                    firstPlayerName4.innerHTML = firstPlayerNameWord;
+                    firstPlayerScore3.innerHTML = firstPlayerScoreNumber;
+                    secondPlayerName4.innerHTML = secondPlayerNameWord;
+                    secondPlayerScore3.innerHTML = secondPlayerScoreNumber;
+                    winner.innerHTML = "Draw!";
+                    document.querySelector('.gameOverRow').classList.remove('d-block');
+                    document.querySelector('.gameOverRow').classList.add('d-none');
+                    document.querySelector('#btnNewGame').classList.remove('d-block');
+                    document.querySelector('#btnNewGame').classList.add('d-none');
+                    document.querySelector('#btnTiebreakerRound').classList.remove('d-none');
+                    document.querySelector('#btnTiebreakerRound').classList.add('d-block');
+                }
+                else if(firstPlayerSelection + secondPlayerSelection === "rs" || firstPlayerSelection + secondPlayerSelection === "pr" || firstPlayerSelection + secondPlayerSelection === "sp") {
+                    document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                    document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                    document.querySelector('.sectionRoundWinner').classList.remove('d-none');
+                    document.querySelector('.sectionRoundWinner').classList.add('d-block');
+                    firstPlayerScoreNumber = firstPlayerScoreNumber + 1;
+                    currentRound2.innerHTML = currentRoundNumber;
+                    totalRounds2.innerHTML = totalRoundsNumber;
+                    firstPlayerName2.innerHTML = firstPlayerNameWord;
+                    firstPlayerScore2.innerHTML = firstPlayerScoreNumber;
+                    secondPlayerName2.innerHTML = secondPlayerNameWord;
+                    secondPlayerScore2.innerHTML = secondPlayerScoreNumber;
+                    roundWinner.innerHTML = firstPlayerNameWord;
+                    firstPlayerName3.innerHTML = firstPlayerNameWord;
+                    secondPlayerName3.innerHTML = secondPlayerNameWord;
+                    currentRoundNumber = currentRoundNumber + 1;
+                    if (firstPlayerScoreNumber > (totalRoundsNumber/2) || secondPlayerScoreNumber > (totalRoundsNumber/2)) {
+                        document.querySelector('#btnNextRound').classList.remove('d-block');
+                        document.querySelector('#btnNextRound').classList.add('d-none');
+                        document.querySelector('#btnDisplayWinner').classList.remove('d-none');
+                        document.querySelector('#btnDisplayWinner').classList.add('d-block');
+                        currentRoundNumber = currentRoundNumber - 1;
+                    }
+                }
+                else {
+                    document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                    document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                    document.querySelector('.sectionRoundWinner').classList.remove('d-none');
+                    document.querySelector('.sectionRoundWinner').classList.add('d-block');
+                    secondPlayerScoreNumber = secondPlayerScoreNumber + 1;
+                    currentRound2.innerHTML = currentRoundNumber;
+                    totalRounds2.innerHTML = totalRoundsNumber;
+                    firstPlayerName2.innerHTML = firstPlayerNameWord;
+                    firstPlayerScore2.innerHTML = firstPlayerScoreNumber;
+                    secondPlayerName2.innerHTML = secondPlayerNameWord;
+                    secondPlayerScore2.innerHTML = secondPlayerScoreNumber;
+                    roundWinner.innerHTML = secondPlayerNameWord;
+                    firstPlayerName3.innerHTML = firstPlayerNameWord;
+                    secondPlayerName3.innerHTML = secondPlayerNameWord;
+                    currentRoundNumber = currentRoundNumber + 1;
+                    if (firstPlayerScoreNumber > (totalRoundsNumber/2) || secondPlayerScoreNumber > (totalRoundsNumber/2)) {
+                        document.querySelector('#btnNextRound').classList.remove('d-block');
+                        document.querySelector('#btnNextRound').classList.add('d-none');
+                        document.querySelector('#btnDisplayWinner').classList.remove('d-none');
+                        document.querySelector('#btnDisplayWinner').classList.add('d-block');
+                        currentRoundNumber = currentRoundNumber - 1;
+                    }
+                }
+            });
+
+            btnPaper2.addEventListener('click', function(){
+                secondPlayerSelection = "p";
+                imageSecondPlayer.src = "images/player2Paper.png";
+                imageSecondPlayer.alt = "Paper";
+                figCaptionSecondPlayer.innerHTML = "PAPER";
+                if(firstPlayerSelection + secondPlayerSelection === "rr" || firstPlayerSelection + secondPlayerSelection === "pp" || firstPlayerSelection + secondPlayerSelection === "ss") {
+                    document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                    document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                    document.querySelector('.sectionWinner').classList.remove('d-none');
+                    document.querySelector('.sectionWinner').classList.add('d-block');
+                    currentRound3.innerHTML = currentRoundNumber;
+                    totalRounds3.innerHTML = totalRoundsNumber;
+                    firstPlayerName4.innerHTML = firstPlayerNameWord;
+                    firstPlayerScore3.innerHTML = firstPlayerScoreNumber;
+                    secondPlayerName4.innerHTML = secondPlayerNameWord;
+                    secondPlayerScore3.innerHTML = secondPlayerScoreNumber;
+                    winner.innerHTML = "Draw!";
+                    document.querySelector('.gameOverRow').classList.remove('d-block');
+                    document.querySelector('.gameOverRow').classList.add('d-none');
+                    document.querySelector('#btnNewGame').classList.remove('d-block');
+                    document.querySelector('#btnNewGame').classList.add('d-none');
+                    document.querySelector('#btnTiebreakerRound').classList.remove('d-none');
+                    document.querySelector('#btnTiebreakerRound').classList.add('d-block');
+                }
+                else if(firstPlayerSelection + secondPlayerSelection === "rs" || firstPlayerSelection + secondPlayerSelection === "pr" || firstPlayerSelection + secondPlayerSelection === "sp") {
+                    document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                    document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                    document.querySelector('.sectionRoundWinner').classList.remove('d-none');
+                    document.querySelector('.sectionRoundWinner').classList.add('d-block');
+                    firstPlayerScoreNumber = firstPlayerScoreNumber + 1;
+                    currentRound2.innerHTML = currentRoundNumber;
+                    totalRounds2.innerHTML = totalRoundsNumber;
+                    firstPlayerName2.innerHTML = firstPlayerNameWord;
+                    firstPlayerScore2.innerHTML = firstPlayerScoreNumber;
+                    secondPlayerName2.innerHTML = secondPlayerNameWord;
+                    secondPlayerScore2.innerHTML = secondPlayerScoreNumber;
+                    roundWinner.innerHTML = firstPlayerNameWord;
+                    firstPlayerName3.innerHTML = firstPlayerNameWord;
+                    secondPlayerName3.innerHTML = secondPlayerNameWord;
+                    currentRoundNumber = currentRoundNumber + 1;
+                    if (firstPlayerScoreNumber > (totalRoundsNumber/2) || secondPlayerScoreNumber > (totalRoundsNumber/2)) {
+                        document.querySelector('#btnNextRound').classList.remove('d-block');
+                        document.querySelector('#btnNextRound').classList.add('d-none');
+                        document.querySelector('#btnDisplayWinner').classList.remove('d-none');
+                        document.querySelector('#btnDisplayWinner').classList.add('d-block');
+                        currentRoundNumber = currentRoundNumber - 1;
+                    }
+                }
+                else {
+                    document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                    document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                    document.querySelector('.sectionRoundWinner').classList.remove('d-none');
+                    document.querySelector('.sectionRoundWinner').classList.add('d-block');
+                    secondPlayerScoreNumber = secondPlayerScoreNumber + 1;
+                    currentRound2.innerHTML = currentRoundNumber;
+                    totalRounds2.innerHTML = totalRoundsNumber;
+                    firstPlayerName2.innerHTML = firstPlayerNameWord;
+                    firstPlayerScore2.innerHTML = firstPlayerScoreNumber;
+                    secondPlayerName2.innerHTML = secondPlayerNameWord;
+                    secondPlayerScore2.innerHTML = secondPlayerScoreNumber;
+                    roundWinner.innerHTML = secondPlayerNameWord;
+                    firstPlayerName3.innerHTML = firstPlayerNameWord;
+                    secondPlayerName3.innerHTML = secondPlayerNameWord;
+                    currentRoundNumber = currentRoundNumber + 1;
+                    if (firstPlayerScoreNumber > (totalRoundsNumber/2) || secondPlayerScoreNumber > (totalRoundsNumber/2)) {
+                        document.querySelector('#btnNextRound').classList.remove('d-block');
+                        document.querySelector('#btnNextRound').classList.add('d-none');
+                        document.querySelector('#btnDisplayWinner').classList.remove('d-none');
+                        document.querySelector('#btnDisplayWinner').classList.add('d-block');
+                        currentRoundNumber = currentRoundNumber - 1;
+                    }
+                }
+            });
+            
+            btnScissors2.addEventListener('click', function(){
+                secondPlayerSelection = "s";
+                imageSecondPlayer.src = "images/player2Scissors.png";
+                imageSecondPlayer.alt = "Scissors";
+                figCaptionSecondPlayer.innerHTML = "SCISSORS";
+                if(firstPlayerSelection + secondPlayerSelection === "rr" || firstPlayerSelection + secondPlayerSelection === "pp" || firstPlayerSelection + secondPlayerSelection === "ss") {
+                    document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                    document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                    document.querySelector('.sectionWinner').classList.remove('d-none');
+                    document.querySelector('.sectionWinner').classList.add('d-block');
+                    currentRound3.innerHTML = currentRoundNumber;
+                    totalRounds3.innerHTML = totalRoundsNumber;
+                    firstPlayerName4.innerHTML = firstPlayerNameWord;
+                    firstPlayerScore3.innerHTML = firstPlayerScoreNumber;
+                    secondPlayerName4.innerHTML = secondPlayerNameWord;
+                    secondPlayerScore3.innerHTML = secondPlayerScoreNumber;
+                    winner.innerHTML = "Draw!";
+                    document.querySelector('.gameOverRow').classList.remove('d-block');
+                    document.querySelector('.gameOverRow').classList.add('d-none');
+                    document.querySelector('#btnNewGame').classList.remove('d-block');
+                    document.querySelector('#btnNewGame').classList.add('d-none');
+                    document.querySelector('#btnTiebreakerRound').classList.remove('d-none');
+                    document.querySelector('#btnTiebreakerRound').classList.add('d-block');
+                }
+                else if(firstPlayerSelection + secondPlayerSelection === "rs" || firstPlayerSelection + secondPlayerSelection === "pr" || firstPlayerSelection + secondPlayerSelection === "sp") {
+                    document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                    document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                    document.querySelector('.sectionRoundWinner').classList.remove('d-none');
+                    document.querySelector('.sectionRoundWinner').classList.add('d-block');
+                    firstPlayerScoreNumber = firstPlayerScoreNumber + 1;
+                    currentRound2.innerHTML = currentRoundNumber;
+                    totalRounds2.innerHTML = totalRoundsNumber;
+                    firstPlayerName2.innerHTML = firstPlayerNameWord;
+                    firstPlayerScore2.innerHTML = firstPlayerScoreNumber;
+                    secondPlayerName2.innerHTML = secondPlayerNameWord;
+                    secondPlayerScore2.innerHTML = secondPlayerScoreNumber;
+                    roundWinner.innerHTML = firstPlayerNameWord;
+                    firstPlayerName3.innerHTML = firstPlayerNameWord;
+                    secondPlayerName3.innerHTML = secondPlayerNameWord;
+                    currentRoundNumber = currentRoundNumber + 1;
+                    if (firstPlayerScoreNumber > (totalRoundsNumber/2) || secondPlayerScoreNumber > (totalRoundsNumber/2)) {
+                        document.querySelector('#btnNextRound').classList.remove('d-block');
+                        document.querySelector('#btnNextRound').classList.add('d-none');
+                        document.querySelector('#btnDisplayWinner').classList.remove('d-none');
+                        document.querySelector('#btnDisplayWinner').classList.add('d-block');
+                        currentRoundNumber = currentRoundNumber - 1;
+                    }
+                }
+                else {
+                    document.querySelector('.sectionPlayerTurn').classList.remove('d-block');
+                    document.querySelector('.sectionPlayerTurn').classList.add('d-none');
+                    document.querySelector('.sectionRoundWinner').classList.remove('d-none');
+                    document.querySelector('.sectionRoundWinner').classList.add('d-block');
+                    secondPlayerScoreNumber = secondPlayerScoreNumber + 1;
+                    currentRound2.innerHTML = currentRoundNumber;
+                    totalRounds2.innerHTML = totalRoundsNumber;
+                    firstPlayerName2.innerHTML = firstPlayerNameWord;
+                    firstPlayerScore2.innerHTML = firstPlayerScoreNumber;
+                    secondPlayerName2.innerHTML = secondPlayerNameWord;
+                    secondPlayerScore2.innerHTML = secondPlayerScoreNumber;
+                    roundWinner.innerHTML = secondPlayerNameWord;
+                    firstPlayerName3.innerHTML = firstPlayerNameWord;
+                    secondPlayerName3.innerHTML = secondPlayerNameWord;
+                    currentRoundNumber = currentRoundNumber + 1;
+                    if (firstPlayerScoreNumber > (totalRoundsNumber/2) || secondPlayerScoreNumber > (totalRoundsNumber/2)) {
+                        document.querySelector('#btnNextRound').classList.remove('d-block');
+                        document.querySelector('#btnNextRound').classList.add('d-none');
+                        document.querySelector('#btnDisplayWinner').classList.remove('d-none');
+                        document.querySelector('#btnDisplayWinner').classList.add('d-block');
+                        currentRoundNumber = currentRoundNumber - 1;
+                    }
+                }
+            });
+
+            btnNextRound.addEventListener('click', function(){
+                document.querySelector('.sectionRoundWinner').classList.remove('d-block');
+                document.querySelector('.sectionRoundWinner').classList.add('d-none');
+                document.querySelector('.sectionPlayerTurn').classList.remove('d-none');
+                document.querySelector('.sectionPlayerTurn').classList.add('d-block');
+                document.querySelector('.btnRock1').classList.remove('d-none');
+                document.querySelector('.btnRock1').classList.add('d-block');
+                document.querySelector('.btnRock2').classList.remove('d-block');
+                document.querySelector('.btnRock2').classList.add('d-none');
+                document.querySelector('.btnPaper1').classList.remove('d-none');
+                document.querySelector('.btnPaper1').classList.add('d-block');
+                document.querySelector('.btnPaper2').classList.remove('d-block');
+                document.querySelector('.btnPaper2').classList.add('d-none');
+                document.querySelector('.btnScissors1').classList.remove('d-none');
+                document.querySelector('.btnScissors1').classList.add('d-block');
+                document.querySelector('.btnScissors2').classList.remove('d-block');
+                document.querySelector('.btnScissors2').classList.add('d-none');
+                if(numberOfPlayers == 2) {
+                    firstPlayerNameWord = document.querySelector('#inputPlayerOneName2').value;
+                    secondPlayerNameWord = document.querySelector('#inputPlayerTwoName').value;
+                }
+                else {
+                    firstPlayerNameWord = document.querySelector('#inputPlayerOneName1').value;
+                }
+                currentRound.innerHTML = currentRoundNumber;
+                totalRounds.innerHTML = totalRoundsNumber;
+                firstPlayerName1.innerHTML = firstPlayerNameWord;
+                firstPlayerScore1.innerHTML = firstPlayerScoreNumber;
+                secondPlayerName1.innerHTML = secondPlayerNameWord;
+                secondPlayerScore1.innerHTML = secondPlayerScoreNumber;
+                otherPlayer.innerHTML = secondPlayerNameWord;
+                currentPlayer.innerHTML = firstPlayerNameWord;
+            });
+
+            btnTiebreakerRound.addEventListener('click', function(){
+                document.querySelector('.sectionWinner').classList.remove('d-block');
+                document.querySelector('.sectionWinner').classList.add('d-none');
+                document.querySelector('.sectionRoundWinner').classList.remove('d-block');
+                document.querySelector('.sectionRoundWinner').classList.add('d-none');
+                document.querySelector('.sectionPlayerTurn').classList.remove('d-none');
+                document.querySelector('.sectionPlayerTurn').classList.add('d-block');
+                document.querySelector('.btnRock1').classList.remove('d-none');
+                document.querySelector('.btnRock1').classList.add('d-block');
+                document.querySelector('.btnRock2').classList.remove('d-block');
+                document.querySelector('.btnRock2').classList.add('d-none');
+                document.querySelector('.btnPaper1').classList.remove('d-none');
+                document.querySelector('.btnPaper1').classList.add('d-block');
+                document.querySelector('.btnPaper2').classList.remove('d-block');
+                document.querySelector('.btnPaper2').classList.add('d-none');
+                document.querySelector('.btnScissors1').classList.remove('d-none');
+                document.querySelector('.btnScissors1').classList.add('d-block');
+                document.querySelector('.btnScissors2').classList.remove('d-block');
+                document.querySelector('.btnScissors2').classList.add('d-none');
+                if(numberOfPlayers == 2) {
+                    firstPlayerNameWord = document.querySelector('#inputPlayerOneName2').value;
+                    secondPlayerNameWord = document.querySelector('#inputPlayerTwoName').value;
+                }
+                else {
+                    firstPlayerNameWord = document.querySelector('#inputPlayerOneName1').value;
+                }
+                currentRound.innerHTML = currentRoundNumber;
+                totalRounds.innerHTML = totalRoundsNumber;
+                firstPlayerName1.innerHTML = firstPlayerNameWord;
+                firstPlayerScore1.innerHTML = firstPlayerScoreNumber;
+                secondPlayerName1.innerHTML = secondPlayerNameWord;
+                secondPlayerScore1.innerHTML = secondPlayerScoreNumber;
+                otherPlayer.innerHTML = secondPlayerNameWord;
+                currentPlayer.innerHTML = firstPlayerNameWord;
+            });
+
+            btnDisplayWinner.addEventListener('click', function(){
+                document.querySelector('.sectionRoundWinner').classList.remove('d-block');
+                document.querySelector('.sectionRoundWinner').classList.add('d-none');
+                document.querySelector('.sectionWinner').classList.remove('d-none');
+                document.querySelector('.sectionWinner').classList.add('d-block');
+                currentRound3.innerHTML = currentRoundNumber;
+                totalRounds3.innerHTML = totalRoundsNumber;
+                firstPlayerName4.innerHTML = firstPlayerNameWord;
+                firstPlayerScore3.innerHTML = firstPlayerScoreNumber;
+                secondPlayerName4.innerHTML = secondPlayerNameWord;
+                secondPlayerScore3.innerHTML = secondPlayerScoreNumber;
+                if (firstPlayerScoreNumber > secondPlayerScoreNumber) {
+                    winner.innerHTML = firstPlayerNameWord;
+                }
+                else {
+                    winner.innerHTML = secondPlayerNameWord;
+                }
+                document.querySelector('.gameOverRow').classList.remove('d-none');
+                document.querySelector('.gameOverRow').classList.add('d-block');
+                document.querySelector('#btnNewGame').classList.remove('d-none');
+                document.querySelector('#btnNewGame').classList.add('d-block');
+                document.querySelector('#btnTiebreakerRound').classList.remove('d-block');
+                document.querySelector('#btnTiebreakerRound').classList.add('d-none');
+            });
+
+            btnNewGame.addEventListener('click', function(){
+                location.reload();
+            });
+
+            btnQuit1.addEventListener('click', function(){
+                location.reload();
+            });
+
+            btnQuit2.addEventListener('click', function(){
+                location.reload();
+            });
+            
+            btnQuit3.addEventListener('click', function(){
+                location.reload();
+            });
+
+            btnTitle.addEventListener('click', function(){
+                location.reload();
+            });
+
+    </script>
+</html>
